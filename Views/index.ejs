@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  	.form{
+  		padding: 15px;
+  		text-align: 2px;
+  	}
+  	#table{
+  		width: 60%;
+  		margin: 50px auto;
+  	}
+  	.buton{
+  		width: 80px;
+  		display: flex;
+  		flex-direction: row;
+  		justify-content: center;
+  		margin: auto;
+  	}
+  </style>
+</head>
+<body>
+    <table id="table" class="table table-bordered" >
+        <thead>
+            <tr>
+            	<th>ID</th>
+               	<th>Username</th>
+                <th>Address</th>
+				<th>Email</th>
+				<th>Action</th>
+            </tr>
+        </thead>
+         <tbody>
+         <% print.forEach(function (user) { %>
+            <tr>
+            	<td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.address %></td>
+                <td><%= user.email %></td>
+                <td>
+                	<div class="buton">
+                		<a class="btn btn-success edit" href="/update/<%= user.id %>">Update</a>
+                		<a class="btn btn-danger delete" href="/delete/<%= user.id %>">Delete</a>
+                	</div>
+                </td>
+            </tr>
+         <% }) %>
+         </tbody>
+    </table>
+    <div class="buton"><a type="button" href="/add" class="btn btn-info">Add user</a></div>
+</body>
+</html>
